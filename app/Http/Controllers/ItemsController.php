@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use \App\Item;
+
   class ItemsController extends Controller
   {
 
@@ -40,14 +41,17 @@ use \App\Item;
         ]);
     }
     
-        public function show($id)
+     public function show($id)
     {
       $item = Item::find($id);
       $want_users = $item->want_users;
+      $have_users = $item->have_users;
 
       return view('items.show', [
           'item' => $item,
           'want_users' => $want_users,
+          'have_users' => $have_users,
       ]);
     }
+    
   }
